@@ -97,3 +97,5 @@ $("newChatForm").addEventListener("submit",async e=>{
 $("logoutBtn").onclick=async()=>{await db.auth.signOut();if(realtimeChannel)await db.removeChannel(realtimeChannel);user=null;activeConversation=null;$("appView").classList.add("hidden");$("authView").classList.remove("hidden");$("authForm").reset();setMode("login")};
 db.auth.onAuthStateChange((event,session)=>{if(event==="SIGNED_OUT"&&!session&&user){user=null;$("appView").classList.add("hidden");$("authView").classList.remove("hidden")}});
 (async()=>{const {data}=await db.auth.getSession();if(data.session)await startApp(data.session.user)})();
+
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) { window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(err=>console.warn("PWA registration:",err))); }
