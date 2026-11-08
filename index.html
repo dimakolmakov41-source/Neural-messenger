@@ -1,47 +1,44 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>Neural Messenger</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js" defer></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827"><title>Neural Messenger</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js" defer></script>
 </head>
 <body>
-  <main class="page">
-    <section class="auth-card" id="authCard">
-      <div class="brand-mark">N</div>
-      <p class="eyebrow">NEURAL NETWORK • PRIVATE MESSAGING</p>
-      <h1>Neural <span>Messenger</span></h1>
-      <p class="subtitle">Твой новый способ быть на связи.</p>
-
-      <div class="tabs" role="tablist" aria-label="Авторизация">
-        <button class="tab active" id="loginTab" type="button">Вход</button>
-        <button class="tab" id="registerTab" type="button">Регистрация</button>
-      </div>
-
+<div class="shell">
+  <section id="authView" class="auth-view">
+    <div class="auth-card">
+      <div class="logo">N</div><div class="overline">PRIVATE • CONNECTED • NEURAL</div>
+      <h1>Neural <span>Messenger</span></h1><p class="muted">Общайся без границ.</p>
+      <div class="tabs"><button id="loginTab" class="tab active" type="button">Вход</button><button id="registerTab" class="tab" type="button">Регистрация</button></div>
       <form id="authForm">
-        <label for="email">Электронная почта</label>
-        <input id="email" type="email" autocomplete="email" placeholder="name@example.com" required>
-        <label for="password">Пароль</label>
-        <input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="Минимум 6 символов" required>
-        <button class="primary" id="submitButton" type="submit">Войти</button>
-      </form>
-      <p class="message" id="message" aria-live="polite"></p>
-      <p class="fine-print">Продолжая, ты создаёшь защищённую учётную запись Neural Messenger.</p>
-    </section>
+        <label for="email">Почта</label><input id="email" type="email" placeholder="name@example.com" autocomplete="email" required>
+        <label for="password">Пароль</label><input id="password" type="password" minlength="6" placeholder="Минимум 6 символов" autocomplete="current-password" required>
+        <button id="authSubmit" class="primary" type="submit">Войти</button>
+      </form><p id="authMessage" class="notice" aria-live="polite"></p>
+    </div>
+  </section>
 
-    <section class="account-card hidden" id="accountCard">
-      <div class="brand-mark small">N</div>
-      <p class="eyebrow">NEURAL MESSENGER</p>
-      <h2>Ты вошёл!</h2>
-      <p class="subtitle" id="accountEmail"></p>
-      <p class="message success">Аккаунт подключён. Следующий этап — чаты и сообщения.</p>
-      <button class="secondary" id="logoutButton" type="button">Выйти из аккаунта</button>
-    </section>
-  </main>
-  <footer>NEURAL MESSENGER <span>•</span> EARLY ACCESS</footer>
-</body>
-</html>
+  <section id="appView" class="app-view hidden">
+    <aside class="sidebar">
+      <header class="side-head"><div class="brand"><div class="logo mini">N</div><div><b>Neural</b><small>MESSENGER</small></div></div><button id="logoutBtn" class="icon-btn" title="Выйти">↪</button></header>
+      <div class="me"><div class="avatar" id="myAvatar">N</div><div class="me-info"><b id="myName">Пользователь</b><small id="myEmail"></small></div></div>
+      <div class="section-title">СООБЩЕНИЯ <button id="newChatBtn" class="plus" title="Новый чат">＋</button></div>
+      <div id="chatList" class="chat-list"><div class="empty">Загружаем чаты…</div></div>
+      <div class="side-foot">NEURAL MESSENGER <span>•</span> BETA</div>
+    </aside>
+    <main class="chat-panel">
+      <div id="welcome" class="welcome"><div class="welcome-icon">✦</div><h2>Твой Neural Messenger</h2><p>Выбери чат слева или начни новый разговор.</p><button id="welcomeNew" class="primary compact" type="button">＋ Новый чат</button></div>
+      <div id="conversation" class="conversation hidden">
+        <header class="chat-head"><div class="avatar" id="peerAvatar">N</div><div class="peer-info"><b id="peerName">Чат</b><small id="peerStatus">личный разговор</small></div></header>
+        <div id="messages" class="messages"><div class="empty">Загрузка сообщений…</div></div>
+        <form id="messageForm" class="composer"><input id="messageInput" maxlength="4000" placeholder="Написать сообщение…" autocomplete="off" required><button class="send" type="submit" aria-label="Отправить">➤</button></form>
+      </div>
+    </main>
+  </section>
+</div>
+<dialog id="newChatDialog"><form id="newChatForm" class="dialog-card"><button type="button" id="closeDialog" class="dialog-close">×</button><div class="overline">НОВОЕ ОБЩЕНИЕ</div><h2>Найти пользователя</h2><p class="muted">Введи точный username собеседника.</p><label for="usernameInput">Имя пользователя</label><input id="usernameInput" placeholder="например, dima_123" minlength="3" required><button class="primary" type="submit">Найти и открыть чат</button><p id="newChatMessage" class="notice"></p></form></dialog>
+</body></html>
