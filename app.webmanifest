@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "Neural Messenger",
+  "short_name": "Neural",
+  "description": "Личный мессенджер Neural Messenger",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a1020",
+  "theme_color": "#101827",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
