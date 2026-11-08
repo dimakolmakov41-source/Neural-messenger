@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Neural Messenger</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <section class="auth-card" id="authCard">
+      <div class="brand-mark">N</div>
+      <p class="eyebrow">NEURAL NETWORK • PRIVATE MESSAGING</p>
+      <h1>Neural <span>Messenger</span></h1>
+      <p class="subtitle">Твой новый способ быть на связи.</p>
+
+      <div class="tabs" role="tablist" aria-label="Авторизация">
+        <button class="tab active" id="loginTab" type="button">Вход</button>
+        <button class="tab" id="registerTab" type="button">Регистрация</button>
+      </div>
+
+      <form id="authForm">
+        <label for="email">Электронная почта</label>
+        <input id="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+        <label for="password">Пароль</label>
+        <input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="Минимум 6 символов" required>
+        <button class="primary" id="submitButton" type="submit">Войти</button>
+      </form>
+      <p class="message" id="message" aria-live="polite"></p>
+      <p class="fine-print">Продолжая, ты создаёшь защищённую учётную запись Neural Messenger.</p>
+    </section>
+
+    <section class="account-card hidden" id="accountCard">
+      <div class="brand-mark small">N</div>
+      <p class="eyebrow">NEURAL MESSENGER</p>
+      <h2>Ты вошёл!</h2>
+      <p class="subtitle" id="accountEmail"></p>
+      <p class="message success">Аккаунт подключён. Следующий этап — чаты и сообщения.</p>
+      <button class="secondary" id="logoutButton" type="button">Выйти из аккаунта</button>
+    </section>
+  </main>
+  <footer>NEURAL MESSENGER <span>•</span> EARLY ACCESS</footer>
+</body>
+</html>
